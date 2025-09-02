@@ -34,23 +34,21 @@ DEFAULT_DB_CONFIG = {
 
 
 def get_db_config(context):
-    """Ambil config dari Preferences"""
+    """Get config from Addon Preferences"""
     prefs = context.preferences.addons[__name__].preferences
     return {
-        "user": DEFAULT_DB_CONFIG["user"],
-        "password": DEFAULT_DB_CONFIG["password"],
+        "user": prefs.user_host or DEFAULT_DB_CONFIG["user"],
+        "password": prefs.password_host or DEFAULT_DB_CONFIG["password"],
         "host": prefs.db_host or DEFAULT_DB_CONFIG["host"],
-        "port": DEFAULT_DB_CONFIG["port"],
-        "database": DEFAULT_DB_CONFIG["database"],
+        "port": int(prefs.db_port_host or DEFAULT_DB_CONFIG["port"]),
+        "database": prefs.db_name_host or DEFAULT_DB_CONFIG["database"],
     }
-
 
 # ===============================
 # CACHE
 # ===============================
 shot_list_cache = []
 artist_list_cache = []
-
 
 # ===============================
 # DB FUNCTIONS
