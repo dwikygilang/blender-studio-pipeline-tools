@@ -3,7 +3,7 @@ bl_info = {
     "author": "Dwiky Gilang I",
     "version": (1, 0),
     "blender": (4, 0, 0),
-    "location": "View3D > Sidebar > Roleplay Studio",
+    "location": "View3D > Sidebar > Studio",
     "description": "Addon for load shot assigned artist from local database",
     # "wiki_url": "https://github.com/dwiky/roleplay_studio/wiki",
     "category": "Pipeline",
@@ -25,11 +25,11 @@ import bpy
 # CONFIG DEFAULT
 # ===============================
 DEFAULT_DB_CONFIG = {
-    "user": "roleplay",
-    "password": "Parkir2000",
-    "host": "192.168.1.47",  # default host
+    "user": "urPostgresqlUsername",
+    "password": "urPassword",
+    "host": "localhost",  # default host
     "port": 5432,
-    "database": "rb_shotloader"
+    "database": "urDatabase"
 }
 
 
@@ -103,25 +103,25 @@ class StudioAddonPreferences(bpy.types.AddonPreferences):
     db_host: bpy.props.StringProperty(
         name="Host",
         description="Address host PostgreSQL",
-        default="192.168.1.47"
+        default="localhost"
     )
     
     user_host: bpy.props.StringProperty(
         name="Username",
         description="Username PostgreSQL",
-        default="roleplay"
+        default="urPostgresqlUsername"
     )
     
     password_host: bpy.props.StringProperty(
         name="Password",
         description="Password PostgreSQL",
-        default="Parkir2000"
+        default="urPassword"
     )
     
     db_name_host: bpy.props.StringProperty(
         name="Database",
         description="Database PostgreSQL",
-        default="rb_shotloader"
+        default="urDatabase"
     )
     
     db_port_host: bpy.props.StringProperty(
